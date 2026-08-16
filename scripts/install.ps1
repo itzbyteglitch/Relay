@@ -3,7 +3,7 @@
     Relay installer — Windows PowerShell
 .DESCRIPTION
     Installs uv, Claude Code, and Relay CLI.
-    Usage: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/<org>/relay/main/scripts/install.ps1")))
+    Usage: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/install.ps1")))
 #>
 
 [CmdletBinding()]

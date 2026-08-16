@@ -1,6 +1,6 @@
 #!/bin/sh
 # Relay installer — macOS/Linux (POSIX sh)
-# Usage: curl -fsSL https://raw.githubusercontent.com/<org>/relay/main/scripts/install.sh | sh
+# Usage: curl -fsSL https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/install.sh | sh
 
 set -eu
 
@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO_ORG="<org>"
+REPO_ORG="itzbyteglitch"
 REPO_NAME="relay"
 INSTALL_DIR="${HOME}/.local/bin"
 UV_VERSION_MIN="0.5.0"

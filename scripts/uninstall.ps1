@@ -3,8 +3,8 @@
     Relay uninstaller — Windows PowerShell
 .DESCRIPTION
     Removes relay-cli and ~/.relay config directory.
-    Usage: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.ps1")))
-    Usage with auto-confirm: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.ps1"))) -Yes
+    Usage: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.ps1")))
+    Usage with auto-confirm: & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.ps1"))) -Yes
 #>
 
 [CmdletBinding()]

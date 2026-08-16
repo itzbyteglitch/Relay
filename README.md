@@ -20,12 +20,12 @@ Relay lets you run Claude Code with any LLM provider you choose. A Cloudflare Wo
 
 **macOS / Linux:**
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/<org>/relay/main/scripts/install.sh" | sh
+curl -fsSL "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/install.sh" | sh
 ```
 
 **Windows (PowerShell):**
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/<org>/relay/main/scripts/install.ps1")))
+& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/install.ps1")))
 ```
 
 ### 2. Configure
@@ -137,12 +137,12 @@ preview_id = "<your-preview-kv-id>"
 
 **macOS / Linux:**
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.sh" | sh
+curl -fsSL "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.sh" | sh
 ```
 
 **Windows (PowerShell):**
 ```powershell
-& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.ps1")))
+& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.ps1")))
 ```
 
 Removes only `~/.relay/` and the `uv tool`-installed `relay-cli`. Does **not** touch `uv`, Python, or Claude Code.

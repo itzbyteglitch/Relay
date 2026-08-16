@@ -1,7 +1,7 @@
 #!/bin/sh
 # Relay uninstaller — macOS/Linux (POSIX sh)
-# Usage: curl -fsSL https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.sh | sh
-#        curl -fsSL https://raw.githubusercontent.com/<org>/relay/main/scripts/uninstall.sh | sh -s -- --yes
+# Usage: curl -fsSL https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.sh | sh
+#        curl -fsSL https://raw.githubusercontent.com/itzbyteglitch/relay/main/scripts/uninstall.sh | sh -s -- --yes
 
 set -eu
 
