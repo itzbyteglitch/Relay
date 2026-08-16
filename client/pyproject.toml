@@ -1,0 +1,37 @@
+[project]
+name = "relay-cli"
+version = "0.1.0"
+description = "Relay CLI - Proxy Claude Code through arbitrary LLM providers"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1.0",
+    "rich>=13.7.0",
+    "httpx>=0.27.0",
+    "keyring>=25.0.0",
+    "cryptography>=42.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "ruff>=0.5.0",
+]
+
+[project.scripts]
+relay = "relay_cli.cli:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"

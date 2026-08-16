@@ -1,0 +1,13 @@
+name = "relay-server"
+main = "src/index.ts"
+compatibility_date = "2024-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env]
+# Set via wrangler secret put RELAY_PASSWORD
+# Set via wrangler secret put RELAY_ADMIN_PASSWORD
+
+[[kv_namespaces]]
+binding = "RELAY_KV"
+id = "local-test-id"
+preview_id = "local-test-id"
