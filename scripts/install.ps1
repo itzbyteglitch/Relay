@@ -120,7 +120,10 @@ if (-not (Test-Command "claude")) {
 
 # --- Step 3: Install Relay CLI ---
 Write-Step "Installing Relay CLI..."
-Invoke-Run "uv tool install --force relay-cli"
+$tempDir = [System.IO.Path]::GetTempPath() + "relay-install-" + [Guid]::NewGuid()
+Invoke-Run "git clone --depth 1 https://github.com/itzbyteglitch/relay.git $tempDir"
+Invoke-Run "uv tool install --force $tempDir\client"
+Invoke-Run "Remove-Item -Recurse -Force $tempDir"
 Write-Success "Relay CLI installed/updated"
 
 # --- Done ---

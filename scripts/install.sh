@@ -125,7 +125,11 @@ fi
 
 # --- Step 3: Install Relay CLI ---
 step "Installing Relay CLI..."
-run "uv tool install --force relay-cli"
+# Clone repo to temp dir and install from source (not published to PyPI)
+TEMP_DIR=$(mktemp -d)
+run "git clone --depth 1 https://github.com/${REPO_ORG}/${REPO_NAME}.git ${TEMP_DIR}"
+run "uv tool install --force ${TEMP_DIR}/client"
+run "rm -rf ${TEMP_DIR}"
 success "Relay CLI installed/updated"
 
 # --- Done ---
