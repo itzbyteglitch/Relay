@@ -157,8 +157,13 @@ export class OpenAIChatTransport {
       }
     }
 
+    // Strip claude/ gateway prefix if present
+    const modelForUpstream = request.model.startsWith('claude/')
+      ? request.model.slice(7)
+      : request.model
+
     return {
-      model: request.model.replace(this.config.modelPrefix, ''),
+      model: modelForUpstream.replace(this.config.modelPrefix, ''),
       messages,
       stream: request.stream,
       tools: tools.length > 0 ? tools : undefined,
@@ -302,6 +307,10 @@ export class OpenAIChatTransport {
   async send(request: AnthropicMessageRequest): Promise<AnthropicMessageResponse> {
     const openAIRequest = this.convertToOpenAI(request)
 
+    console.log('OpenAI request model:', openAIRequest.model)
+    console.log('OpenAI request baseUrl:', this.config.baseUrl)
+    console.log('OpenAI request apiKey prefix:', this.config.apiKey?.substring(0, 10) + '...')
+
     const response = await fetch(`${this.config.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -314,6 +323,7 @@ export class OpenAIChatTransport {
     if (!response.ok) {
       const errorText = await response.text()
       console.error('Upstream error:', response.status, errorText)
+      // Return error details in response for debugging
       throw new Error(`OpenAI transport error: ${response.status} - ${errorText}`)
     }
 

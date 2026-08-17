@@ -27,8 +27,8 @@ messages.post('/', async (c) => {
     try {
       const response = await transport.send(body)
       return c.json(response)
-    } catch (e) {
-      return c.json({ error: 'Upstream error' }, 502)
+    } catch (e: any) {
+      return c.json({ error: 'Upstream error', details: e.message }, 502)
     }
   }
 })
