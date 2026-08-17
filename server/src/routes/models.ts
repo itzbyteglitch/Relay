@@ -34,7 +34,7 @@ models.get('/', async (c) => {
     const models = await fetchProviderModels(provider, apiKey)
     for (const model of models) {
       allModels.push({
-        id: `${provider.modelPrefix}${model.id}`,
+        id: `claude/${provider.modelPrefix}${model.id}`,
         type: 'model' as const,
         display_name: model.display_name || model.id,
         created_at: model.created_at || new Date().toISOString()

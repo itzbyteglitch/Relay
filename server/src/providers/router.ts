@@ -60,7 +60,10 @@ export async function resolveTransport(
   model: string,
   kvHelpers: ReturnType<typeof createKVHelpers>
 ): Promise<Transport | null> {
-  const provider = await getProviderForModelWithKV(model, kvHelpers)
+  // Strip "claude/" prefix if present (Claude Code gateway compatibility)
+  const internalModel = model.startsWith('claude/') ? model.slice(7) : model
+  
+  const provider = await getProviderForModelWithKV(internalModel, kvHelpers)
   
   console.log('Resolved provider:', provider ? provider.name : 'none')
   if (!provider || !provider.enabled) return null

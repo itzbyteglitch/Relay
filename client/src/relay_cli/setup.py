@@ -5,7 +5,7 @@ import httpx
 from rich.console import Console
 from rich.panel import Panel
 
-from .config import read_config, set_token, write_config
+from .config import read_config, set_token, write_config, Config
 
 console = Console()
 
@@ -49,17 +49,12 @@ def run_setup(server_url: str, password: str, device_name: str) -> None:
                 console.print("[red]Error:[/red] No token in response")
                 sys.exit(1)
 
+            write_config(Config(
+                server_url=server_url,
+                device_uuid=device_uuid,
+                device_name=device_name
+            ))
             set_token(device_uuid, token)
-
-            config = read_config()
-            if config is None:
-                config = type('Config', (), {'server_url': '', 'device_uuid': '', 'device_name': ''})()
-
-            write_config(type('Config', (), {
-                'server_url': server_url,
-                'device_uuid': device_uuid,
-                'device_name': device_name
-            })())
 
     except httpx.ConnectError:
         console.print(f"[red]Error:[/red] Could not connect to {server_url}")

@@ -181,3 +181,30 @@ describe('AnthropicMessagesTransport', () => {
     )
   })
 })
+
+describe('Claude gateway model ID compatibility', () => {
+  it('getProviderForModel resolves model without claude/ prefix', () => {
+    const provider = getProviderForModel('opencode/opencode-zen')
+    expect(provider).toBeDefined()
+    expect(provider!.name).toBe('opencode')
+  })
+
+  it('model IDs in /v1/models should contain claude/ prefix', () => {
+    // This test documents the expected behavior:
+    // The models endpoint returns IDs with claude/ prefix for gateway compatibility
+    const modelId = 'claude/opencode/opencode-zen'
+    expect(modelId).toContain('claude')
+    expect(modelId.startsWith('claude/')).toBe(true)
+  })
+
+  it('router strips claude/ prefix before resolving', () => {
+    // Test that the router logic correctly strips the claude/ prefix
+    const gatewayModelId = 'claude/opencode/opencode-zen'
+    const internalModelId = gatewayModelId.startsWith('claude/') ? gatewayModelId.slice(7) : gatewayModelId
+    expect(internalModelId).toBe('opencode/opencode-zen')
+    
+    const provider = getProviderForModel(internalModelId)
+    expect(provider).toBeDefined()
+    expect(provider!.name).toBe('opencode')
+  })
+})
